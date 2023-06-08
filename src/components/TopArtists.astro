@@ -1,0 +1,8 @@
+---
+import { supabase } from "../database";
+const artists = (await supabase.from("artists").select("*")).data
+---
+<h3 class="font-bold text-xl">Top Artist</h3>
+<div class="flex flex-wrap gap-4 ">
+    {artists?.map((artist)=><img class="w-[46%] aspect-square object-cover rounded-2xl" src={artist.artist_photo} alt={artist.artist_name} />)}
+</div>

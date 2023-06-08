@@ -1,0 +1,18 @@
+---
+import Thumbnail from "./Thumbnail";
+import TrackPlay from "../components/TrackPlay"
+
+interface Props{
+    title:string,
+    author?:string,
+    thumbnail:string,
+    trackid?:number,
+    src:string,
+}
+const {title,author,thumbnail} = Astro.props
+---
+
+<div class="flex justify-between items-center gap-4">
+    <Thumbnail track_author={author} track_thumbnail={thumbnail} track_title={title} />
+    <TrackPlay {...Astro.props} client:only/>
+</div>

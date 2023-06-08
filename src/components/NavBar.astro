@@ -1,0 +1,16 @@
+---
+import {BiHomeAlt2} from "react-icons/bi/index"
+import {MdOutlineExplore} from "react-icons/md/index"
+import {TbPlaylist} from "react-icons/tb"
+---
+<nav class="relative">
+    <div class="sticky top-0 p-4 flex flex-col gap-4">
+        <h1 class="text-green-600 font-bold text-4xl max-sm:hidden">SoundWave</h1>
+        <h1 class="text-green-600 font-bold text-xl sm:hidden">SW</h1>
+        <ul class="flex flex-col gap-4 [&>a]:flex [&>a]:gap-2 [&>a]:items-center p-4 max-sm:p-2 [&>a]:text-xl [&>a]:font-medium ">
+            <a href="/"><BiHomeAlt2 /><span class="max-sm:hidden">Home</span></a>
+            <a href="/explore"><MdOutlineExplore /><span class="max-sm:hidden">Explore</span></a>
+            <a href="/playlist"><TbPlaylist /><span class="max-sm:hidden">Playlist</span></a>
+        </ul>
+    </div>
+</nav>
