@@ -11,8 +11,10 @@ const tracks = data?.map((pl)=>{
 ---
 
 <Layout title={`Playlist | ${playlist_data?.title}`}>
-    <div class="mx-auto flex flex-col gap-8">
-        <img src={playlist_data?.cover_image} class="w-full rounded-md h-80 object-cover">
+    <div class="flex flex-col gap-8 w-full">
+        <div class="mx-auto w-[70%]">
+            <img src={playlist_data?.cover_image} class="w-full rounded-md h-96 object-cover object-top">
+        </div>
         <h2 class="text-xl font-bold">{playlist_data?.title}</h2>
         <Playlist tracks={tracks} client:only />
     </div>

@@ -1,12 +1,7 @@
 import { atom } from "nanostores";
+import type { PlaylistTrack } from "../types/types";
 
-export const currentTrack = atom<{
-    title?:string,
-    thumbnail?:string,
-    trackid?:number,
-    src?:string,
-    author?:string
-}|null | undefined>(null)
+export const currentTrack = atom<PlaylistTrack |null | undefined>(null)
 
 export const player = atom({
     player:()=>document.querySelector("audio"),
@@ -43,10 +38,6 @@ export const player = atom({
     }
 })
 
-export const playlist = atom<{
-    title?:string,
-    thumbnail?:string,
-    trackid?:number,
-    src?:string,
-    author?:string
-}[] | undefined | null>(null)
+export const playlist = atom<PlaylistTrack[] | undefined | null>(null)
+
+export const page_playlist = atom<PlaylistTrack[] | undefined | null>(null) 

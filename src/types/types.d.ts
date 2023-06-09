@@ -10,3 +10,11 @@ export interface TrackInfo{
         } | null;
     } | null | undefined;
 }
+
+export interface PlaylistTrack{
+    title?:string,
+    thumbnail?:string,
+    trackid?:number,
+    src?:string,
+    author?:string
+}

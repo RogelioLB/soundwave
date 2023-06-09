@@ -6,7 +6,6 @@ import Genres from "../components/Genres.astro"
 import {supabase} from "../database"
 import Playlist from "../components/Playlist"
 const {data} = await supabase.from("tracks").select("id,track_url,track_name,track_thumbnail,albums(album_name,id_author:artists(artist_name))").order("created_at",{ascending:false}).limit(10)
-
 ---
 
 <Layout title="Soundwave">
