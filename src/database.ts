@@ -9,6 +9,10 @@ export const supabase = createClient<Database>(
 })
 
 export const getFavorites = async (userid:string) =>{
+    if(userid===undefined){
+        alert('Not logged in')
+        location.replace('/')
+    }
     const {data} = await supabase.from("favorites").select("tracks(id,track_url,track_name,track_thumbnail,albums(album_name,id_author:artists(artist_name)))").filter("id_user","eq",userid)
     const tracks = data?.map(({tracks})=>{
         return {...tracks}
