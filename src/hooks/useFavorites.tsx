@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { supabase } from "../database";
 import useUser from "./useUser";
 
-export default function useFavorite(id_track:number){
+export default function useFavorite(id_track:number) : [boolean,Dispatch<SetStateAction<boolean>>]{
     const [favorite,setFavorite] = useState(false)
     const [user] = useUser()
 
@@ -16,5 +16,5 @@ export default function useFavorite(id_track:number){
         getFavorite()
     },[user])
 
-    return favorite
+    return [favorite,setFavorite]
 }

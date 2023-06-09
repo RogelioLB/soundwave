@@ -4,12 +4,13 @@ interface Props{
     title:string,
     text:string,
     url:string,
-    bgcolor:string
+    bgcolor:string,
+    redirectUrl?:string
 }
-const {text,title,url,bgcolor} = Astro.props
+const {text,title,url,bgcolor,redirectUrl} = Astro.props
 ---
 
-<div class=`${bgcolor} rounded-xl relative overflow-hidden flex-1 aspect-square`>
+<a href={redirectUrl} class=`${bgcolor} rounded-xl relative overflow-hidden flex-1 aspect-square`>
     <img src={url} alt={title} class="object-cover h-full">
     <div class="absolute flex bottom-0 left-0 bg-gradient-to-b from-white/0 to-black/90 right-0 p-4 gap-4 items-end">
         <div class="bg-green-600 max-md:w-10 max-md:h-10 w-16 h-16 rounded-full flex items-center justify-center">
@@ -20,4 +21,4 @@ const {text,title,url,bgcolor} = Astro.props
             <p class="text-xl font-light max-md:text-xs">{text}</p>
         </div>
     </div>
-</div>
+</a>

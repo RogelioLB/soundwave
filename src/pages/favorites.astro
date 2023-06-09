@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FavoritesPlaylist from "../components/Favorites"
+---
+
+<Layout title="SoundWave | Favorites">
+    <div class="flex-1 flex flex-col gap-8">
+        <h2 class="font-bold text-xl">Favorites Tracks</h2>
+        <FavoritesPlaylist client:load />
+    </div>
+</Layout>

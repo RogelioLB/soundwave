@@ -9,9 +9,11 @@ import Center from "../layouts/Center.astro"
 
 <script>import { supabase } from "../database";
     document.getElementById("login")?.addEventListener("click",async()=>{
-        const {data,error} = await supabase.auth.signInWithOAuth({
-            provider:"google"
+        await supabase.auth.signInWithOAuth({
+            provider:"google",
+            options:{
+                redirectTo:import.meta.env.PUBLIC_REDIRECT_URL
+            }
         })
-        console.log(data,error)
     })
 </script>

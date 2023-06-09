@@ -3,12 +3,13 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { HiPlay, HiPause } from "react-icons/hi2/index";
 import { currentTrack, player } from "../stores/player";
 import type { PlaylistTrack } from "../types/types";
-import useUser from "../hooks/useUser";
 import useFavorite from "../hooks/useFavorites";
+import { newFavorite } from "../database";
+import useUser from "../hooks/useUser";
 
 export default function TrackPlay(track:PlaylistTrack){
-    const favorite = useFavorite(track.trackid as number)
-    console.log(favorite)
+    const [favorite,setFavorite] = useFavorite(track.trackid as number)
+    const [user] = useUser()
     const $currentTrack = useStore(currentTrack)
     const $player = useStore(player)
 
@@ -23,11 +24,15 @@ export default function TrackPlay(track:PlaylistTrack){
         await $player.play()
     }
 
+    const handleFavorite = async () =>{
+        setFavorite(await newFavorite(track.trackid as number,user?.id as string))
+    }
+
     return(
         <div className="flex border-slate-50 border rounded-full items-center gap-2 justify-between">
-            <div className={`ml-4 text-xl max-sm:hidden ${favorite ?"text-green-400" : ''}`}>
+            <button onClick={handleFavorite} className={`ml-4 text-xl max-sm:hidden ${favorite ?"text-green-400" : ''}`}>
                 {favorite ? <AiFillHeart />  : <AiOutlineHeart />}
-            </div>
+            </button>
             {
                 ($currentTrack?.trackid === track.trackid) ? 
                 <button onClick={handleClick} className={`max-md:text-xs bg-green-600 max-md:p-1 p-2 text-2xl flex items-center justify-center rounded-full border border-slate-50`}>

@@ -12,7 +12,7 @@ const {data} = await supabase.from("tracks").select("id,track_url,track_name,tra
 	<div class="flex flex-col gap-8">
 		<div class="max-sm:flex-col flex gap-8">
 			<Card title="Daily Mix" text="New mixes everyday" url="/man-listen1.png" bgcolor="bg-yellow-400" />
-			<Card title="Liked Songs" text="Your favorite tracks" url="/man-listen2.png" bgcolor="bg-blue-900" />
+			<Card redirectUrl="/favorites" title="Liked Songs" text="Your favorite tracks" url="/man-listen2.png" bgcolor="bg-blue-900" />
 		</div>
 		<h2 class="font-bold text-xl">Newest Tracks</h2>
 		<Playlist tracks={data} client:only/>
