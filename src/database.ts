@@ -22,6 +22,10 @@ export const getFavorites = async (userid:string) =>{
 }
 
 export const newFavorite = async (trackid:number,userid:string) =>{
+    if(!userid){
+        alert('Not logged in')
+        return false
+    }
     const {data} = await supabase.from("favorites").select("id,tracks(id),id_user").filter("id_track","eq",trackid).filter("id_user","eq",userid).limit(1).maybeSingle()
     console.log(data)
     if(data?.id_user) {
