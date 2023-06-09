@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { HiPlay, HiPause } from "react-icons/hi2";
+import { HiPlay, HiPause } from "react-icons/hi2/index";
 import { currentTrack, player } from "../stores/player";
 
 interface Props{

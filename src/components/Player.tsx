@@ -1,12 +1,11 @@
 import { useStore } from "@nanostores/react";
 import Thumbnail from "./Thumbnail";
-import { currentTrack, player, playlist } from "../stores/player";
+import { currentTrack, player } from "../stores/player";
 import Controls from "./Controls";
 
 export default function Player(){
     const $currentTrack = useStore(currentTrack)
     const $player = useStore(player)
-    const $playlist = useStore(playlist)
 
     const handlePlaying = () =>{
         document.title = `SoundWave | Playing ${$currentTrack?.title}`

@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react"
 import {FiSkipBack,FiSkipForward} from "react-icons/fi/index"
-import { HiPause, HiPlay } from "react-icons/hi2"
+import { HiPause, HiPlay } from "react-icons/hi2/index"
 import { player } from "../stores/player"
 export default function Controls(){
     const $player = useStore(player)
