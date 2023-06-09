@@ -15,21 +15,21 @@ export interface Database {
           album_photo: string
           created_at: string | null
           id: number
-          id_artist: number | null
+          id_artist: number
         }
         Insert: {
           album_name: string
           album_photo: string
           created_at?: string | null
           id?: number
-          id_artist?: number | null
+          id_artist: number
         }
         Update: {
           album_name?: string
           album_photo?: string
           created_at?: string | null
           id?: number
-          id_artist?: number | null
+          id_artist?: number
         }
         Relationships: [
           {
@@ -95,6 +95,27 @@ export interface Database {
           }
         ]
       }
+      playlists: {
+        Row: {
+          cover_image: string | null
+          created_at: string | null
+          id: number
+          title: string | null
+        }
+        Insert: {
+          cover_image?: string | null
+          created_at?: string | null
+          id?: number
+          title?: string | null
+        }
+        Update: {
+          cover_image?: string | null
+          created_at?: string | null
+          id?: number
+          title?: string | null
+        }
+        Relationships: []
+      }
       tracks: {
         Row: {
           created_at: string | null
@@ -125,6 +146,40 @@ export interface Database {
             foreignKeyName: "tracks_track_album_fkey"
             columns: ["track_album"]
             referencedRelation: "albums"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      tracks_playlist: {
+        Row: {
+          created_at: string | null
+          id: number
+          id_playlist: number
+          id_track: number
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          id_playlist: number
+          id_track: number
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          id_playlist?: number
+          id_track?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tracks_playlist_id_playlist_fkey"
+            columns: ["id_playlist"]
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tracks_playlist_id_track_fkey"
+            columns: ["id_track"]
+            referencedRelation: "tracks"
             referencedColumns: ["id"]
           }
         ]

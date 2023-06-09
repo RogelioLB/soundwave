@@ -24,12 +24,14 @@ const { title } = Astro.props;
 	<body class="bg-black text-white">
 		<div class="flex">
 			<NavBar />
-			<div class="flex-1">
-				<div class="p-8 flex gap-8">
+			<div class="flex-1 overflow-hidden">
+				<div class="p-8 gap-8 flex">
 					<slot />
 				</div>
 			</div>
+			<div data-turbo-permanent id="audio-player" class="fixed bottom-0 w-screen">
 				<Player client:load />
+			</div>
 		</div>
 	</body>
 </html>

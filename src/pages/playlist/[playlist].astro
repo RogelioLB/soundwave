@@ -1,0 +1,19 @@
+---
+import Playlist from "../../components/Playlist";
+import { supabase } from "../../database";
+import Layout from "../../layouts/Layout.astro";
+const {playlist} = Astro.params
+const playlist_data = (await supabase.from("playlists").select("*").filter("id","eq",playlist).limit(1).single()).data ?? null
+const {data} = await supabase.from("tracks_playlist").select("tracks(id,track_url,track_name,track_thumbnail,albums(album_name,id_author:artists(artist_name)))").filter("id_playlist","eq",playlist)
+const tracks = data?.map((pl)=>{
+    return {...pl.tracks}
+})
+---
+
+<Layout title="Playlist">
+    <div class="mx-auto flex flex-col gap-8">
+        <img src={playlist_data?.cover_image} class="w-full rounded-md">
+        <h2 class="text-xl font-bold">{playlist_data?.title}</h2>
+        <Playlist tracks={tracks} client:load/>
+    </div>
+</Layout>

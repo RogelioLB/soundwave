@@ -1,7 +1,7 @@
 interface Props{
-    track_title:string,
+    track_title?:string,
     track_author?:string,
-    track_thumbnail:string
+    track_thumbnail?:string
 }
 export default function Thumbnail({track_thumbnail,track_author,track_title} : Props){
     return(

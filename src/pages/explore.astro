@@ -1,8 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { supabase } from "../database";
 
+const {data} = await supabase.from("playlists").select("title,cover_image,id")
+const playlists = data
 ---
 
 <Layout title="Explore Page">
-
+    <div class="flex-col flex gap-4 overflow-hidden">
+        <h2 class="text-2xl font-bold">See Playlist By Us</h2>
+        <div class="flex gap-8 overflow-x-auto px-1">
+            {playlists?.map((playlist)=>(
+                <a href={`/playlist/${playlist.id}`} class="bg-slate-50 rounded-md">
+                    <div class="w-44 h-44">
+                        <img src={playlist.cover_image} class="w-full aspect-square rounded-md object-cover"/>
+                    </div>
+                    <h4 class="text-lime-700 font-bold text-lg p-2 text-center">{playlist.title}</h4>
+                </a>
+            ))}
+        </div>
+    </div>
 </Layout>
