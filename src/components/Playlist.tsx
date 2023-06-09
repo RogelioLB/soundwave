@@ -2,7 +2,7 @@ import { useStore } from "@nanostores/react";
 import Track from "./Track";
 import { currentTrack, player, playlist } from "../stores/player";
 import { useEffect } from "react";
-import { HiPlay } from "react-icons/hi2";
+import { HiPlay } from "react-icons/hi2/index";
 import type { TrackInfo } from "../types/types";
 
 
