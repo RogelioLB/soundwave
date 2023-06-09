@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai/index";
 import { HiPlay, HiPause } from "react-icons/hi2/index";
 import { currentTrack, player } from "../stores/player";
 import type { PlaylistTrack } from "../types/types";
