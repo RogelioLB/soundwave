@@ -20,11 +20,11 @@ export default function Controls(){
     
     return(
         <div className="flex gap-3 text-xl items-center">
-            <FiSkipBack onClick={handlePrevious} />
+            <button><FiSkipBack onClick={handlePrevious} /></button>
             <button className="bg-zinc-700 p-2 rounded-full" onClick={handlePlay}>
                 {$player.playing ? <HiPause /> : <HiPlay />}
             </button>
-            <FiSkipForward onClick={handleSkip}/>
+            <button><FiSkipForward onClick={handleSkip}/></button>
         </div>
     )
 }

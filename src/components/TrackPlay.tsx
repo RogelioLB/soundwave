@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { HiPlay, HiPause } from "react-icons/hi2";
-import { currentTrack, player, playlist } from "../stores/player";
+import { currentTrack, player } from "../stores/player";
 
 interface Props{
     title?:string,
@@ -13,7 +13,6 @@ interface Props{
 
 export default function TrackPlay(track:Props){
     const $currentTrack = useStore(currentTrack)
-    const $playlist = useStore(playlist)
     const $player = useStore(player)
 
     const handleClick = async() =>{
@@ -32,11 +31,11 @@ export default function TrackPlay(track:Props){
             <AiOutlineHeart className="ml-4 text-xl max-sm:hidden"/>
             {
                 ($currentTrack?.trackid === track.trackid) ? 
-                <button onClick={handleClick} className={`max-md:text-sm ${$currentTrack?.trackid === track.trackid ? "bg-green-600" : ""} p-2 text-2xl flex items-center justify-center rounded-full border border-slate-50`}>
+                <button onClick={handleClick} className={`max-md:text-xs bg-green-600 max-md:p-1 p-2 text-2xl flex items-center justify-center rounded-full border border-slate-50`}>
                 {   $player.playing ? <HiPause /> : <HiPlay />}
                 </button>
                 :
-                <button onClick={handlePlay} className={`max-md:text-sm p-2 text-2xl flex items-center justify-center rounded-full border border-slate-50`}>
+                <button onClick={handlePlay} className={`max-md:text-xs max-md:p-1 p-2 text-2xl flex items-center justify-center rounded-full border border-slate-50`}>
                     <HiPlay />
                 </button>
             }

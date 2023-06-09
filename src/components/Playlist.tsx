@@ -12,9 +12,9 @@ export default function Playlist({tracks}:{tracks:TrackInfo[] | null  | undefine
 
     const playPlaylist = async () =>{
         await loadPlaylist()
-        if($playlist!==null && $playlist!==undefined){
-            await currentTrack.set($playlist[0])
-            console.log($playlist)
+        const newPlaylist = playlist.get()
+        if(newPlaylist!==null && newPlaylist!==undefined){
+            await currentTrack.set(newPlaylist[0])
             await $player.play()
         }
     }
@@ -36,8 +36,8 @@ export default function Playlist({tracks}:{tracks:TrackInfo[] | null  | undefine
     },[])
 
     return(
-        <div className="bg-zinc-900 p-8 rounded-3xl mb-28 flex flex-col gap-9 relative">
-            <button onClick={async()=>await playPlaylist()} className="bg-green-600 p-3 rounded-full -top-3 -left-3 absolute">
+        <div className="bg-zinc-900 max-sm:p-4 p-8 rounded-3xl mb-28 flex flex-col gap-9 relative">
+            <button onClick={()=>playPlaylist()} className="bg-green-600 p-3 rounded-full -top-3 -left-3 absolute">
                 <HiPlay />
             </button>
             {
