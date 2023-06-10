@@ -12,13 +12,13 @@ const {text,title,url,bgcolor,redirectUrl} = Astro.props
 
 <a href={redirectUrl} class=`${bgcolor} rounded-xl relative overflow-hidden flex-1 aspect-square`>
     <img src={url} alt={title} class="object-cover h-full">
-    <div class="absolute flex bottom-0 left-0 bg-gradient-to-b from-white/0 to-black/90 right-0 p-4 gap-4 items-end">
-        <div class="bg-green-600 max-md:w-10 max-md:h-10 w-16 h-16 rounded-full flex items-center justify-center">
+    <div class="absolute flex max-xl:flex-col max-xl:items-start max-xl:gap-2 bottom-0 left-0 bg-gradient-to-b from-white/0 to-black/90 right-0 p-4 gap-4 items-end">
+        <div class="bg-green-600 max-xl:w-10 max-xl:h-10 w-16 h-16 rounded-full flex items-center justify-center">
             <HiPlay className="text-2xl "/>
         </div>
         <div class="">
-            <h4 class="font-bold text-2xl max-md:text-base">{title}</h4>
-            <p class="text-xl font-light max-md:text-xs">{text}</p>
+            <h4 class="font-bold text-2xl max-md:text-base max-xl:text-lg">{title}</h4>
+            <p class="text-xl font-light max-md:text-xs max-xl:text-base">{text}</p>
         </div>
     </div>
 </a>

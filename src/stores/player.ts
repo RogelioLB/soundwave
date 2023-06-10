@@ -4,7 +4,7 @@ import type { PlaylistTrack } from "../types/types";
 export const currentTrack = atom<PlaylistTrack |null | undefined>(null)
 
 export const player = atom({
-    player:()=>document.querySelector("audio"),
+    player:()=>document.querySelector("audio") as HTMLAudioElement,
     playing:false,
     play: async ()=> {
         const $player = player.get()
@@ -35,7 +35,9 @@ export const player = atom({
             else await currentTrack.set($playlist[index-1])
             $player.play()
         }
-    }
+    },
+    duration:0,
+    currentTime:0
 })
 
 export const playlist = atom<PlaylistTrack[] | undefined | null>(null)
